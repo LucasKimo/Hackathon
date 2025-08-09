@@ -4,7 +4,7 @@
 :root{
   --brand:#5956E1;
   --brand-2:#4A47D5;
-  --bg:#F4F6FB;
+  --bg:#F3F8FF;
   --text:#0F1222;
   --muted:#6B7280;
   --card:#FFFFFF;
@@ -29,17 +29,32 @@ body{
 /* =========================
    Steps progress
    ========================= */
-.gs-steps{margin:12px 0 28px}
-.gs-steps-bar{
-  height:8px; border-radius:999px;
-  background:linear-gradient(90deg, var(--brand) 0%, var(--brand-2) 100%);
+.gs-steps-bar {
+  position: relative;
+  height: 8px;                 /* thicker for visibility */
+  background: #E5E7EB;         /* light gray track */
+  border-radius: 999px;
+  overflow: hidden;
 }
-.gs-steps-list{
-  list-style:none; padding:0; margin:8px 0 0;
-  display:flex; justify-content:space-between; gap:8px;
-  color:#666; font-size:12px;
+.gs-steps-fill {
+  position: absolute;          /* overlay inside the track */
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0;                    /* default; Steps sets % via inline style */
+  background: linear-gradient(90deg, var(--brand) 0%, var(--brand-2) 100%);
+  transition: width 240ms ease;
 }
-.gs-steps-list li.active{color:#111; font-weight:700}
+.gs-steps-list {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-top: 8px;
+}
+.gs-steps-list li.active {
+  font-weight: bold;
+  color: var(--brand);
+}
 
 /* =========================
    Hero (title & subtitle)
