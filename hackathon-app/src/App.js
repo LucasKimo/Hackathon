@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './Navbar';
+import Home from './pages/Home';
+import AddGoal from './pages/AddGoals';
+import SetDate from './pages/SetDate'
+import Knowledge from './pages/Knowledge'
+import MainDash from './pages/MainDash'
+import DedicatedTime from './pages/DedicatedTime'
+import GoalSummary from './pages/GoalSummary'
+import Login from './pages/Login'
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Welcome to Future Scope!
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Navbar />
+        <div className="content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/add_goals" element={<AddGoal />} />
+            <Route path="/add_goals/timeline" element={<SetDate />} />
+            <Route path="/add_goals/previous_knowledge" element={<Knowledge />} />
+            <Route path="/main_dashboard" element={<MainDash />} />
+            <Route path="/add_goals/dedicated_time" element={<DedicatedTime />} />
+            <Route path="/add_goals/goal_summary" element={<GoalSummary />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
 }
 
