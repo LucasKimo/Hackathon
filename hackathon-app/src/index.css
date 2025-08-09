@@ -1,0 +1,128 @@
+/* =========================
+   Base variables & reset
+   ========================= */
+:root{
+  --brand:#5956E1;
+  --brand-2:#4A47D5;
+  --bg:#F4F6FB;
+  --text:#0F1222;
+  --muted:#6B7280;
+  --card:#FFFFFF;
+  --border:#E6E8EE;
+  --shadow:0 8px 24px rgba(0,0,0,.06);
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+  color:var(--text);
+  background:var(--bg);
+  line-height:1.45;
+}
+
+/* =========================
+   Top navigation
+   ========================= */
+.gs-nav{background:#fff; box-shadow:var(--shadow)}
+.gs-nav-inner{
+  max-width:1120px; margin:0 auto; padding:12px 20px;
+  display:flex; align-items:center; gap:10px;
+}
+.gs-mark{
+  width:36px; height:36px; border-radius:12px;
+  background:var(--brand); color:#fff;
+  display:grid; place-items:center; font-size:16px;
+}
+.gs-brand{font-weight:700}
+
+/* =========================
+   Page container
+   ========================= */
+.gs-container{max-width:1120px; margin:24px auto; padding:0 16px}
+
+/* =========================
+   Steps progress
+   ========================= */
+.gs-steps{margin:12px 0 28px}
+.gs-steps-bar{
+  height:8px; border-radius:999px;
+  background:linear-gradient(90deg, var(--brand) 0%, var(--brand-2) 100%);
+}
+.gs-steps-list{
+  list-style:none; padding:0; margin:8px 0 0;
+  display:flex; justify-content:space-between; gap:8px;
+  color:#666; font-size:12px;
+}
+.gs-steps-list li.active{color:#111; font-weight:700}
+
+/* =========================
+   Hero (title & subtitle)
+   ========================= */
+.gs-hero{text-align:center; margin:10px 0 18px}
+.gs-hero h1{margin:0; font-weight:800; font-size:28px}
+.gs-sub{margin-top:8px; color:var(--muted); font-size:14px}
+
+/* =========================
+   Summary card
+   ========================= */
+.gs-card{
+  background:var(--card);
+  border-radius:20px;
+  box-shadow:var(--shadow);
+  padding:18px;
+  margin:0 auto;
+  max-width:900px;
+}
+.gs-card-title{margin:0 0 10px; font-size:16px; font-weight:700}
+.gs-plan-box{
+  background:#FAFAFA;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:12px;
+  font-size:14px;
+}
+
+/* =========================
+   Stats row
+   ========================= */
+.gs-stats{
+  display:flex; gap:16px; margin-top:16px; flex-wrap:wrap;
+}
+.gs-stat{
+  flex:1; min-width:120px;
+  border-radius:12px; padding:14px;
+  text-align:center; color:#fff; font-weight:600;
+}
+.gs-stat-num{font-size:20px; font-weight:800}
+.gs-stat-label{font-size:12px; opacity:.9}
+
+/* themed stat colors */
+.purple{background:#E8D9FF; color:#6B21A8}
+.blue  {background:#D6E4FF; color:#1E40AF}
+.green {background:#DCFCE7; color:#166534}
+.orange{background:#FFEED5; color:#B45309}
+
+/* =========================
+   Actions
+   ========================= */
+.gs-actions{
+  display:flex; gap:12px; margin-top:20px; justify-content:center;
+}
+.btn-outline{
+  padding:10px 20px; border:1px solid var(--border);
+  background:#fff; border-radius:8px; cursor:pointer;
+}
+.btn-primary{
+  padding:10px 20px; border:none; border-radius:8px; cursor:pointer;
+  background:var(--brand); color:#fff; font-weight:700;
+}
+
+/* =========================
+   Responsive tweaks
+   ========================= */
+@media (max-width:720px){
+  .gs-hero h1{font-size:22px}
+  .gs-stats{gap:10px}
+  .gs-stat{min-width:46%}
+}
