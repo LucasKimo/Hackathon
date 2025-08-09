@@ -1,10 +1,11 @@
 import React from 'react';
 import AuthDemo from './AuthDemo';
+import GoalsDemo from './GoalsDemo'
 
 export default function App() {
   return (
     <div className="App">
-      <AuthDemo />
+      <GoalsDemo />
     </div>
   );
 }
