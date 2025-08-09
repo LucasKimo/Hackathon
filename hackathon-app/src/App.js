@@ -21,11 +21,11 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/add_goals" element={<AddGoal />} />
-            <Route path="/add_goals/timeline" element={<SetDate />} />
             <Route path="/add_goals/previous_knowledge" element={<Knowledge />} />
-            <Route path="/main_dashboard" element={<MainDash />} />
             <Route path="/add_goals/dedicated_time" element={<DedicatedTime />} />
+            <Route path="/add_goals/timeline" element={<SetDate />} />
             <Route path="/add_goals/goal_summary" element={<GoalSummary />} />
+            <Route path="/main_dashboard" element={<MainDash />} />
             <Route path="/login" element={<Login />} />
           </Routes>
         </div>

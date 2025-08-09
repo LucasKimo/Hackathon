@@ -36,7 +36,7 @@ export default function DedicatedTime() {
     <div className="gs-page">
       <main className="gs-container">
         {/* # Steps (Commitment active) */}
-        <Steps active={4} />
+        <Steps active={3} />
 
         {/* # Title + subtitle */}
         <header className="gs-hero">
@@ -107,9 +107,9 @@ export default function DedicatedTime() {
           <button
             className="btn-primary"
             type="button"
-            onClick={()=> navigate('/add_goals/goal_summary', { state: { hours, start: location.state?.start, end: location.state?.end } })}
+            onClick={()=> navigate('/add_goals/timeline', { state: { hours, start: location.state?.start, end: location.state?.end } })}
           >
-            Create My Dashboard
+            Continue to Timeline
           </button>
         </div>
       </main>

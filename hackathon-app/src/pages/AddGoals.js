@@ -8,7 +8,7 @@ export default function AddGoals(){
 
   const handleContinue = () => {
     // pass goal forward to the next step
-    navigate('/add_goals/timeline', { state: { goal } });
+    navigate('/add_goals/previous_knowledge', { state: { goal } });
   };
 
   return (
@@ -43,7 +43,7 @@ export default function AddGoals(){
         <div className="gs-actions" style={{marginTop:24}}>
           <button type="button" className="btn-outline">Save Draft</button>
           <button type="button" className="btn-primary" onClick={handleContinue}>
-            Continue to Timeline
+            Continue to Knowledge
           </button>
         </div>
       </main>

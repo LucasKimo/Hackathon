@@ -83,7 +83,7 @@ export default function Knowledge(){
     <div className="gs-page">
       <main className="gs-container">
         {/* # Steps (Knowledge active) */}
-        <Steps active={3} />
+        <Steps active={2} />
 
         {/* # Page title + subtitle */}
         <header className="gs-hero">
