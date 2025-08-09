@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './Navbar';
+// import Navbar from './Navbar';
 import Home from './pages/Home';
 import AddGoal from './pages/AddGoals';
 import SetDate from './pages/SetDate'
@@ -8,6 +8,7 @@ import MainDash from './pages/MainDash'
 import DedicatedTime from './pages/DedicatedTime'
 import GoalSummary from './pages/GoalSummary'
 import Login from './pages/Login'
+import Header from './components/Header'
 
 
 
@@ -15,7 +16,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Navbar />
+        <Header />
         <div className="content">
           <Routes>
             <Route path="/" element={<Home />} />
