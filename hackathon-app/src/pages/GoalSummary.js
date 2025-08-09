@@ -8,14 +8,6 @@ export default function GoalSummary() {
 
   return (
     <div className="gs-page">
-      {/* # Top Navigation */}
-      <nav className="gs-nav">
-        <div className="gs-nav-inner">
-          <div className="gs-mark" aria-hidden>🚀</div> {/* # App icon placeholder */}
-          <div className="gs-brand">FutureScope</div>
-        </div>
-      </nav>
-
       <main className="gs-container">
         {/* # Step progress bar + labels */}
         <div className="gs-steps">
