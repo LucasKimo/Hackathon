@@ -1,11 +1,4 @@
-// export default function GoalSummary() {
-//   return (
-//     <>
-//       {/* <Header /> */}
-//       <h2>Goal Summary Page</h2>
-//     </>
-//   )
-// }
+
 
 import { useNavigate } from 'react-router-dom';
 
