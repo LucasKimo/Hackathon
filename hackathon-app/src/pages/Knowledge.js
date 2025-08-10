@@ -1,142 +1,102 @@
-// export default function Knowledge() {
-//   return (
-//     <>
-//       <h2>Previous Knowlege Page</h2>
-//     </>
-//   )
-// }
-
-// export default function SetDate() {
-//   return (
-//     <>
-//       {/* <Header /> */}
-//       <h2>Set Date Page</h2>
-//     </>
-//   )
-// }
-
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Steps from '../components/Steps';
+import RoadmapChecklist from '../components/RoadmapChecklist';
 
-export default function Knowledge(){
+export default function Knowledge() {
   const navigate = useNavigate();
 
-  // # Milestone sections for the knowledge review
-  const sections = [
-    {
-      level: 6,
-      title: 'Platform MVP Completion',
-      items: [
-        'Final QA pass & bug triage',
-        'Creator tool polish (usability fixes)',
-        'Demo scenario packaging & docs',
-      ],
-    },
-    {
-      level: 5,
-      title: 'Core Engine & Model Integration',
-      items: [
-        'Narrative state machine & scene graph runtime',
-        'LLM orchestration (prompt templates, safeguards)',
-        'Real-time inference pipeline (streaming · fallbacks)',
-      ],
-    },
-    {
-      level: 4,
-      title: 'Adaptive Narrative Design',
-      items: [
-        'Branch logic schema (beats, goals, fail states)',
-        'Tone/voice control · style guides · few-shot examples',
-        'Memory system (character/plot continuity)',
-      ],
-    },
-    {
-      level: 3,
-      title: 'Prototyping & User Testing',
-      items: [
-        'Playtest loop (5 users): task flows & retention notes',
-        'Safety & bias review on model outputs',
-        'Telemetry events (choices, dead-ends, session time)',
-      ],
-    },
-    {
-      level: 2,
-      title: 'Story Toolkit & Creator UI',
-      items: [
-        'Scene editor (nodes, edges, variables)',
-        'Prompt block library (intents, constraints, style)',
-        'Versioning & preview (A/B branches)',
-      ],
-    },
-    {
-      level: 1,
-      title: 'Research & Technical Planning',
-      items: [
-        'Model selection (hosted vs local, latency & cost)',
-        'Content policy & safety guardrails plan',
-        'Scope, milestones, and success metrics',
-      ],
-    },
-  ];
+  const [goal, setGoal] = useState('');
+  const [roadmap, setRoadmap] = useState(null);
+  const [checked, setChecked] = useState({});
+
+  useEffect(() => {
+    const saved = localStorage.getItem('lastRoadmap');
+    if (saved) {
+      try {
+        const data = JSON.parse(saved);
+        setGoal(data.goal || '');
+        setRoadmap(data.roadmap || null);
+        setChecked(data.checked || {});
+      } catch {
+        console.error('Invalid lastRoadmap JSON');
+      }
+    }
+  }, []);
+
+  const onToggle = (id) => {
+    const next = { ...checked, [id]: !checked[id] };
+    setChecked(next);
+    localStorage.setItem('lastRoadmap', JSON.stringify({ goal, roadmap, checked: next }));
+  };
+
+  // 상단 카드 진행률 (전체 카테고리 기준)
+  const totalItems = (roadmap?.categories || []).reduce(
+    (sum, c) => sum + (c.items?.length || 0),
+    0
+  );
+  const doneItems = Object.values(checked).filter(Boolean).length;
+  const progress = totalItems ? Math.round((doneItems / totalItems) * 100) : 0;
 
   return (
     <div className="gs-page">
       <main className="gs-container">
-        {/* # Steps (Knowledge active) */}
         <Steps active={2} />
 
-        {/* # Page title + subtitle */}
         <header className="gs-hero">
           <h1>
-            What’s Your <span style={{color:'var(--brand)'}}>Previous Knowledge</span>?
+            What’s Your <span style={{ color: 'var(--brand)' }}>Previous Knowledge</span>?
           </h1>
           <p className="gs-sub">Tell us about your current skills and experience related to your goal.</p>
-          <p className="gs-sub" style={{marginTop:4}}>Review and customize your milestones.</p>
+          <p className="gs-sub" style={{ marginTop: 4 }}>Review and customize your milestones.</p>
         </header>
 
-        {/* # Goal summary header bar */}
-        <section className="gs-card" style={{maxWidth:940}}>
-          {/* Top line: goal + tiny progress */}
-          <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',gap:12,marginBottom:10}}>
-            <div>
-              <div style={{fontSize:12, color:'#6B7280', fontWeight:700, marginBottom:6}}>Your Goal</div>
-              <div style={{fontWeight:700}}>Create AI-Powered Interactive Storytelling Platform</div>
-              <div style={{fontSize:12, color:'#6B7280'}}>March 15, 2024 — September 15, 2024 (6 months)</div>
+        {/* Checklist Card */}
+        <section className="gs-card" style={{ maxWidth: 940, marginTop: 24 }}>
+          {/* 라벨 */}
+          <div style={{ marginBottom: 4, fontSize: 12, color: '#6B7280', fontWeight: 700 }}>
+            Your Goal
+          </div>
+
+          {/* 제목 ↔ 상단 진행률 한 줄 정렬 */}
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              gap: 12,
+              marginBottom: 16,
+              paddingTop: 4
+            }}
+          >
+            <div style={{ fontWeight: 700, fontSize: 20 }}>
+              {goal || 'No goal provided'}
             </div>
-            <div style={{textAlign:'right'}}>
-              <div style={{fontWeight:800}}>0%</div>
-              <div style={{fontSize:12, color:'#6B7280'}}>Complete</div>
+            <div style={{ textAlign: 'right' }}>
+              <div style={{ fontWeight: 800 }}>{progress}%</div>
+              <div style={{ fontSize: 12, color: '#6B7280' }}>Complete</div>
             </div>
           </div>
 
-          {/* # Milestone sections list */}
-          <div style={{display:'grid', gap:12}}>
-            {sections.map((sec)=> (
-              <div key={sec.level} style={{border:'1px solid var(--border)', borderRadius:12, padding:12}}>
-                <div style={{display:'flex', alignItems:'center', gap:10, marginBottom:8}}>
-                  <div style={{
-                    width:28, height:28, borderRadius:999, background:'#EEF2FF',
-                    color:'var(--brand)', display:'grid', placeItems:'center', fontWeight:700
-                  }}>{sec.level}</div>
-                  <div style={{fontWeight:700}}>{sec.title}</div>
-                </div>
-                <ul style={{listStyle:'none', margin:0, padding:0, display:'grid', gap:6}}>
-                  {sec.items.map((it, i)=> (
-                    <li key={i} style={{display:'flex', alignItems:'center', gap:8, fontSize:13}}>
-                      <input type="checkbox" aria-label={`mark ${it}`} />
-                      <span>{it}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+          {!roadmap ? (
+            <p style={{ opacity: 0.8 }}>
+              No checklist found. Please go back to <strong>Add Goals</strong> and press
+              <em> Continue to Knowledge</em> to generate it.
+            </p>
+          ) : (
+            <RoadmapChecklist
+              roadmap={roadmap}
+              checked={checked}
+              onToggle={onToggle}
+              showProgress={false}
+            />
+          )}
         </section>
 
-        {/* # Footer actions */}
-        <div className="gs-actions" style={{marginTop:24}}>
+        {/* Footer */}
+        <div className="gs-actions" style={{ marginTop: 24 }}>
           <button className="btn-outline" type="button">Save Draft</button>
-          <button className="btn-primary" type="button" onClick={()=> navigate('/add_goals/dedicated_time')}>
+          <button className="btn-primary" type="button" onClick={() => navigate('/add_goals/dedicated_time')}>
             Continue to Commitment
           </button>
         </div>
