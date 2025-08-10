@@ -109,21 +109,18 @@ export default function SetDate() {
           <button
             className="btn-outline"
             type="button"
-            onClick={() => navigate('/add_goals/dedicated_time', { state: { hours, start, end } })}
+            onClick={() => navigate(-1)}
           >
-            Back to Commitment
-          </button>
-          <button className="btn-outline" type="button" onClick={()=>console.log('draft saved', {start, end})}>
-            Save Draft
+            Back
           </button>
           <button
             className="btn-primary"
             type="button"
             disabled={!isValid}
-            onClick={()=> navigate('/add_goals/apx_time', { state: { start, end, hours } })}
+            onClick={()=> navigate('/add_goals/goal_summary', { state: { start, end, hours } })}
             style={!isValid ? {opacity:.6, cursor:'not-allowed'} : undefined}
           >
-            Continue to Approx Time
+            Continue to Summary
           </button>
         </div>
 

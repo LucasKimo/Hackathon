@@ -101,8 +101,12 @@ export default function DedicatedTime() {
 
         {/* # Footer actions */}
         <div className="gs-actions" style={{marginTop:24}}>
-          <button className="btn-outline" type="button" onClick={()=> console.log('draft saved', {hours, start: location.state?.start, end: location.state?.end})}>
-            Save Draft
+          <button
+            className="btn-outline"
+            type="button"
+            onClick={() => navigate(-1)}
+          >
+            Back
           </button>
           <button
             className="btn-primary"

@@ -11,13 +11,15 @@ export default function GoalSummary() {
       <main className="gs-container">
         {/* # Step progress bar + labels */}
         <div className="gs-steps">
-          <div className="gs-steps-bar" />
+          <div className="gs-steps-bar">
+            <div className="gs-steps-fill" style={{ width: '100%' }} />
+          </div>
           <ul className="gs-steps-list" aria-label="setup steps">
-            <li>Your Goal</li>
-            <li>Timeline</li>
-            <li>Knowledge</li>
-            <li>Commitment</li>
-            <li className="active">Summary</li>
+            <li className="complete">Your Goal</li>
+            <li className="complete">Timeline</li>
+            <li className="complete">Knowledge</li>
+            <li className="complete">Commitment</li>
+            <li className="complete active">Summary</li>
           </ul>
         </div>
 
@@ -65,7 +67,13 @@ export default function GoalSummary() {
 
         {/* # Actions */}
         <div className="gs-actions">
-          <button className="btn-outline" type="button">Edit My Goal</button>
+          <button
+            className="btn-outline"
+            type="button"
+            onClick={() => navigate(-1)}
+          >
+            Back
+          </button>
           <button
             className="btn-primary"
             type="button"

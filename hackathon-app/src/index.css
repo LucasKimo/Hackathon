@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700;800&display=swap');
 /* =========================
    Base variables & reset
    ========================= */
@@ -15,7 +16,7 @@
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
 body{
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+  font-family: 'Raleway', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   color:var(--text);
   background:var(--bg);
   line-height:1.45;
@@ -61,7 +62,20 @@ body{
    ========================= */
 .gs-hero{text-align:center; margin:10px 0 18px}
 .gs-hero h1{margin:0; font-weight:800; font-size:28px}
+
 .gs-sub{margin-top:8px; color:var(--muted); font-size:14px}
+.gs-sublan{margin-top:8px; color:#FFFFFF; font-size:16px}
+
+.landing-bg {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #313B99 0%, #5062FE 100%);
+  color: white;
+  text-align: center;
+  padding: 2rem;
+}
 
 /* =========================
    Summary card
@@ -111,11 +125,26 @@ body{
 }
 .btn-outline{
   padding:10px 20px; border:1px solid var(--border);
-  background:#fff; border-radius:8px; cursor:pointer;
+  background:#cccccc; border-radius:8px; cursor:pointer;
+  color:#fff;
 }
 .btn-primary{
   padding:10px 20px; border:none; border-radius:8px; cursor:pointer;
   background:var(--brand); color:#fff; font-weight:700;
+}
+
+.btn-primary-landing {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #fff;
+  color: #313B99;
+  font-weight: 700;
+  font-family: 'Raleway', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+.btn-primary-landing:hover {
+  background: #f0f0f0;
 }
 
 /* =========================
@@ -150,8 +179,8 @@ body{
   height:36px; 
   border-radius:12px; 
   object-fit:contain; /* keep original logo aspect */
-  background:var(--brand); /* subtle purple tile behind transparent logos */
-  padding:4px; 
+  background:transparent;
+  padding:0;
 }
 .app-header .brand span{
   font-weight:700;

@@ -41,7 +41,13 @@ export default function AddGoals(){
 
         {/* Actions */}
         <div className="gs-actions" style={{marginTop:24}}>
-          <button type="button" className="btn-outline">Save Draft</button>
+          <button
+            type="button"
+            className="btn-outline"
+            onClick={() => navigate(-1)}
+          >
+            Back
+          </button>
           <button type="button" className="btn-primary" onClick={handleContinue}>
             Continue to Knowledge
           </button>
