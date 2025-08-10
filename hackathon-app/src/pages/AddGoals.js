@@ -273,6 +273,7 @@ export default function AddGoals() {
         {/* Generate 버튼/체크리스트 렌더링은 제거됨 */}
 
         <div className="gs-actions" style={{marginTop:24}}>
+
           <button type="button" className="btn-outline" disabled={loading}>Save Draft</button>
           <button
             type="button"
@@ -282,6 +283,8 @@ export default function AddGoals() {
             title={loading ? 'Generating checklist…' : 'Go to Knowledge'}
           >
             {loading ? 'Preparing…' : 'Continue to Knowledge'}
+
+
           </button>
         </div>
       </main>
