@@ -44,7 +44,7 @@ export default function AddGoals(){
           <button
             type="button"
             className="btn-outline"
-            onClick={() => navigate(-1)}
+            onClick={() =>  navigate(-1)}
           >
             Back
           </button>
