@@ -9,6 +9,8 @@ export const databases = new Databases(client);
 export const functions = new Functions(client);
 export const storage = new Storage(client);
 
+
+
 account.get()
    .then(() => console.log("Connected to appwrite"))
    .catch(err => console.log("SDK reachable. No session yet",err.message));
