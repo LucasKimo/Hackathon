@@ -65,7 +65,8 @@ export default function SetDate() {
                 <span style={{color:'#16a34a'}}>Good fit ✔︎</span>
               )}
               {fits === false && (
-                <span style={{color:'#b91c1c'}}>Estimated effort exceeds your timeline by ~{estWeeks - timelineWeeks} weeks.</span>
+                // <span style={{color:'#b91c1c'}}>Estimated effort exceeds your timeline by ~{estWeeks - timelineWeeks} weeks.</span>
+                <span style={{color:'#b91c1c'}}>You need ~{estWeeks - timelineWeeks} more weeks to achieve your goal.</span>
               )}
             </div>
           )}
@@ -109,21 +110,18 @@ export default function SetDate() {
           <button
             className="btn-outline"
             type="button"
-            onClick={() => navigate('/add_goals/dedicated_time', { state: { hours, start, end } })}
+            onClick={() => navigate(-1)}
           >
-            Back to Commitment
-          </button>
-          <button className="btn-outline" type="button" onClick={()=>console.log('draft saved', {start, end})}>
-            Save Draft
+            Back
           </button>
           <button
             className="btn-primary"
             type="button"
             disabled={!isValid}
-            onClick={()=> navigate('/add_goals/apx_time', { state: { start, end, hours } })}
+            onClick={()=> navigate('/add_goals/goal_summary', { state: { start, end, hours } })}
             style={!isValid ? {opacity:.6, cursor:'not-allowed'} : undefined}
           >
-            Continue to Approx Time
+            Continue to Summary
           </button>
         </div>
 

@@ -65,3 +65,67 @@ export default function RoadmapChecklist({ roadmap, checked, onToggle, onExport,
     </div>
   );
 }
+
+// import React from 'react';
+
+// export default function RoadmapChecklist({ roadmap, checked, onToggle }) {
+//   return (
+//     <div>
+//       {(roadmap?.categories || []).map((category, idx) => (
+//         <section
+//           key={idx}
+//           style={{
+//             border: '1px solid #E5E7EB',
+//             borderRadius: 12,
+//             padding: 16,
+//             marginBottom: 16
+//           }}
+//         >
+//           {/* 카테고리 제목 (퍼센티지/버튼 없음) */}
+//           <div
+//             style={{
+//               display: 'flex',
+//               justifyContent: 'space-between',
+//               alignItems: 'center',
+//               marginBottom: 12
+//             }}
+//           >
+//             <h3 style={{ margin: 0, fontSize: 20, fontWeight: 800 }}>
+//               {category.title}
+//             </h3>
+//           </div>
+
+//           {/* 체크리스트 아이템 */}
+//           <div>
+//             {(category.items || []).map((item) => (
+//               <label
+//                 key={item.id}
+//                 style={{
+//                   display: 'flex',
+//                   alignItems: 'center',
+//                   gap: 12,
+//                   padding: '8px 4px'
+//                 }}
+//               >
+//                 <input
+//                   type="checkbox"
+//                   checked={!!checked[item.id]}
+//                   onChange={() => onToggle(item.id)}
+//                   style={{ width: 18, height: 18 }}
+//                 />
+//                 <span>
+//                   {item.text}
+//                   {typeof item.estimatedHours === 'number' && (
+//                     <span style={{ marginLeft: 8, opacity: 0.6, fontSize: 12 }}>
+//                       ({item.estimatedHours}h)
+//                     </span>
+//                   )}
+//                 </span>
+//               </label>
+//             ))}
+//           </div>
+//         </section>
+//       ))}
+//     </div>
+//   );
+// }

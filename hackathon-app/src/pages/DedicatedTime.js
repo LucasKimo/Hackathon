@@ -1,5 +1,3 @@
-
-
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useMemo, useState } from 'react';
 import Steps from '../components/Steps';
@@ -101,8 +99,12 @@ export default function DedicatedTime() {
 
         {/* # Footer actions */}
         <div className="gs-actions" style={{marginTop:24}}>
-          <button className="btn-outline" type="button" onClick={()=> console.log('draft saved', {hours, start: location.state?.start, end: location.state?.end})}>
-            Save Draft
+          <button
+            className="btn-outline"
+            type="button"
+            onClick={() => navigate(-1)}
+          >
+            Back
           </button>
           <button
             className="btn-primary"
@@ -116,3 +118,73 @@ export default function DedicatedTime() {
     </div>
   );
 }
+
+
+// import { useState, useEffect } from 'react';
+// import { useNavigate } from 'react-router-dom';
+// import Steps from '../components/Steps';
+
+// export default function DedicatedTime() {
+//   const navigate = useNavigate();
+//   const [hoursPerWeek, setHoursPerWeek] = useState(10);
+
+//   useEffect(() => {
+//     const saved = JSON.parse(localStorage.getItem('dedicatedTime') || '{}');
+//     if (typeof saved.hoursPerWeek === 'number') {
+//       setHoursPerWeek(saved.hoursPerWeek);
+//     }
+//   }, []);
+
+//   const onContinue = () => {
+//     localStorage.setItem('dedicatedTime', JSON.stringify({ hoursPerWeek }));
+//     navigate('/add_goals/set_date'); // 최신 라우트명에 맞추세요
+//   };
+
+//   return (
+//     <div className="gs-page">
+//       <main className="gs-container">
+//         <Steps active={3} />
+
+//         <header className="gs-hero">
+//           <h1>
+//             How Much <span style={{ color: 'var(--brand)' }}>Time</span> Can You Dedicate?
+//           </h1>
+//           <p className="gs-sub">Choose how many hours per week you can commit.</p>
+//         </header>
+
+//         <section className="gs-card" style={{ maxWidth: 640, marginTop: 24 }}>
+//           <div style={{ marginBottom: 12, fontWeight: 700 }}>Hours per week</div>
+
+//           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+//             <input
+//               type="range"
+//               min={1}
+//               max={40}
+//               value={hoursPerWeek}
+//               onChange={(e) => setHoursPerWeek(Number(e.target.value))}
+//               style={{ flex: 1 }}
+//             />
+//             <input
+//               type="number"
+//               min={1}
+//               max={60}
+//               value={hoursPerWeek}
+//               onChange={(e) => setHoursPerWeek(Number(e.target.value))}
+//               style={{ width: 90 }}
+//             />
+//             <span>h/w</span>
+//           </div>
+
+//           <div className="gs-actions" style={{ marginTop: 24, display: 'flex', gap: 12 }}>
+//             <button className="btn-outline" type="button" onClick={() => navigate(-1)}>
+//               Back
+//             </button>
+//             <button className="btn-primary" type="button" onClick={onContinue}>
+//               Continue to Timeline
+//             </button>
+//           </div>
+//         </section>
+//       </main>
+//     </div>
+//   );
+// }
